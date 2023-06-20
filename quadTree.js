@@ -21,11 +21,10 @@ class Rectangle {
   }
 
   insersects(range) {
-    if !(range.x - range.w > this.x + this.w ||
-       range.x + range.w < this.x - this.w ||
-       range.y - range.h > this.y + this.h ||
-       range.y + range.h < this.y - this.h) {
-       }
+    return !(range.x - range.w > this.x + this.w ||
+      range.x + range.w < this.x - this.w ||
+      range.y - range.h > this.y + this.h ||
+      range.y + range.h < this.y - this.h)
   }
 }
 
@@ -71,9 +70,9 @@ class QuadTree {
 
       if (this.northeast.insert(point)) {
         return true;
-      } else if(this.northwest.insert(point)) {
+      } else if (this.northwest.insert(point)) {
         return true;
-      } else if(this.southeast.insert(point)) {
+      } else if (this.southeast.insert(point)) {
         return true;
       } else if (this.southwest.insert(point)) {
         return true;
@@ -93,16 +92,16 @@ class QuadTree {
       }
 
       if (this.divided) {
-        found.concat(this.northeast.query(range));
-        found.concat(this.northwest.query(range));
-        found.concat(this.southeast.query(range));
-        found.concat(this.southwest.query(range));
+        found = found.concat(this.northeast.query(range));
+        found = found.concat(this.northwest.query(range));
+        found = found.concat(this.southeast.query(range));
+        found = found.concat(this.southwest.query(range));
       }
-      
+
       return found;
     }
 
-    
+
   }
 }
 
